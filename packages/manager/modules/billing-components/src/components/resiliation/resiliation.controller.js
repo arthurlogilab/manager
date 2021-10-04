@@ -7,7 +7,6 @@ export default class BillingResiliationController {
 
   resiliate() {
     this.isResiliating = true;
-
     return this.BillingService.putEndRuleStrategy(
       this.service.id,
       this.endStrategy,
