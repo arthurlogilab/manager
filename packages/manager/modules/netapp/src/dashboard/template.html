@@ -18,6 +18,7 @@
             >
                 <span data-translate="netapp_dashboard_volumes"></span>
             </oui-header-tabs-item>
+            <!--
             <oui-header-tabs-item
                 href="{{:: $ctrl.snapshotPoliciesLink }}"
                 active="$ctrl.currentActiveLink() === $ctrl.snapshotPoliciesLink"
@@ -26,6 +27,7 @@
                     data-translate="netapp_dashboard_snapshot_policies"
                 ></span>
             </oui-header-tabs-item>
+            -->
         </oui-header-tabs>
     </oui-header>
     <div data-ovh-alert></div>
@@ -81,6 +83,7 @@
                             ></span>
                         </oui-tile-description>
                     </oui-tile-definition>
+                    <!--
                     <oui-tile-button
                         disabled="!$ctrl.isCreateVolumeAvailable"
                         on-click="$ctrl.goToCreateVolume()"
@@ -89,6 +92,7 @@
                             data-translate="netapp_dashboard_configuration_create_volume"
                         ></span>
                     </oui-tile-button>
+                    -->
                 </oui-tile>
                 <ovh-advices
                     service-name="{{ ::$ctrl.storage.id }}"

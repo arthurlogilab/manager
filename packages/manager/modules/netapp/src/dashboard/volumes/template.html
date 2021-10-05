@@ -1,5 +1,6 @@
 <div>
     <p class="oui-heading_3" data-translate="netapp_volumes_details"></p>
+    <!--
     <p
         data-translate="netapp_volumes_number"
         data-translate-values="{
@@ -14,6 +15,7 @@
         disabled="!$ctrl.isCreateVolumeAvailable"
         ><span data-translate="netapp_volumes_create_volume"></span
     ></oui-button>
+    -->
 
     <oui-datagrid
         class="mt-2"
@@ -24,10 +26,13 @@
             title=":: 'netapp_volumes_id' | translate"
             property="id"
         >
+            <!--
             <a
                 data-ng-href="{{:: $ctrl.getVolumeDetailsHref($row) }}"
                 data-ng-bind="$row.id"
             ></a>
+            -->
+            <span data-ng-bind="$row.id"></span>
         </oui-datagrid-column>
         <oui-datagrid-column
             title=":: 'netapp_volumes_name' | translate"
@@ -56,6 +61,7 @@
             title=":: 'netapp_volumes_status' | translate"
             property="status"
         ></oui-datagrid-column>
+        <!--
         <oui-action-menu compact="true">
             <oui-action-menu-item
                 href="{{:: $ctrl.getVolumeDetailsHref($row) }}"
@@ -81,5 +87,6 @@
                 <span data-translate="netapp_volumes_delete_volume"></span>
             </oui-action-menu-item>
         </oui-action-menu>
+        -->
     </oui-datagrid>
 </div>
