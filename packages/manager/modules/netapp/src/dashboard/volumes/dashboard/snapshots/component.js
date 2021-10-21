@@ -10,6 +10,7 @@ export default {
     snapshots: '<',
     totalSnapshots: '<',
     volumeId: '<',
+    trackClick: '<',
   },
   controller,
   template,

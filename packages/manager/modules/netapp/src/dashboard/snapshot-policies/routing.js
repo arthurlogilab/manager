@@ -8,8 +8,6 @@ export default /* @ngInject */ ($stateProvider) => {
     },
 
     resolve: {
-      goToCreateSnapshotPolicies: /* @ngInject */ ($state) => () =>
-        $state.go('netapp.dashboard.snapshotPolicies.create'),
       getSnapshotPolicies: /* @ngInject */ ($http, $q, serviceName) => () =>
         $http
           .get(`/storage/netapp/${serviceName}/snapshotPolicy`)
@@ -26,11 +24,21 @@ export default /* @ngInject */ ($stateProvider) => {
                 snapshotPolicies.filter(({ status }) => status !== 'deleting'),
               ),
           ),
+      goToCreateSnapshotPolicies: /* @ngInject */ (
+        $state,
+        trackClick,
+      ) => () => {
+        trackClick('snapshot-policy::add-policy');
+        return $state.go('netapp.dashboard.snapshotPolicies.create');
+      },
       snapshotPolicies: /* @ngInject */ (getSnapshotPolicies) =>
         getSnapshotPolicies(),
 
       breadcrumb: /* @ngInject */ ($translate) =>
         $translate.instant('netapp_snapshot_policies_breadcrumb'),
+    },
+    atInternet: {
+      rename: 'netapp::dashboard::snapshot-policy',
     },
   });
 };
