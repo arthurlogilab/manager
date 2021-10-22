@@ -11,6 +11,7 @@ export function initShell(iframe: HTMLIFrameElement) {
     ) => shell.getPluginManager().registerPlugin(pluginId, pluginApi),
     setPluginAvailability: (pluginId: string, availability: boolean) =>
       shell.getPluginManager().setPluginAvailability(pluginId, availability),
+    i18n: () => shell.getPluginManager().plugins.i18n.instance,
   };
 }
 

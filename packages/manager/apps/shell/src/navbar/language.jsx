@@ -1,16 +1,22 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import useClickAway from 'react-use/lib/useClickAway';
 
+import ApplicationContext from '@/context';
+
 import { LANGUAGES } from '@ovh-ux/manager-config';
-import { emit } from '@ovh-ux/ufrontend';
 import { MESSAGES } from './constants';
 
 import LanguageButton from './language/button.jsx';
 import LanguageList from './language/list.jsx';
 
-function LanguageMenu({ userLocale }) {
+function LanguageMenu() {
   const ref = useRef();
+
+  const shellI18n = useContext(ApplicationContext)?.shell?.i18n();
+
   const [show, setShow] = useState(false);
+  const [userLocale, setUserLocale] = useState(shellI18n?.getLocale());
+
   const handleRootClose = () => setShow(false);
 
   useClickAway(ref, handleRootClose);
@@ -20,12 +26,14 @@ function LanguageMenu({ userLocale }) {
 
   useEffect(() => {
     setCurrentLanguage(
-      LANGUAGES.available.find(({ key }) => key === userLocale),
+      shellI18n?.getAvailableLocales().find(({ key }) => key === userLocale),
     );
 
     setAvailableLanguages(
-      LANGUAGES.available.filter(({ key }) => key !== userLocale),
+      shellI18n?.getAvailableLocales().filter(({ key }) => key !== userLocale),
     );
+
+    shellI18n.setLocale(userLocale);
   }, [userLocale]);
 
   if (!currentLanguage && availableLanguages.length === 0) {
@@ -39,12 +47,7 @@ function LanguageMenu({ userLocale }) {
       </LanguageButton>
       <LanguageList
         languages={availableLanguages}
-        onSelect={(locale) =>
-          emit({
-            id: MESSAGES.localeChange,
-            locale,
-          })
-        }
+        onSelect={(locale) => setUserLocale(locale)}
       ></LanguageList>
     </div>
   );

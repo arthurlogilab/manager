@@ -16,7 +16,6 @@ import { MESSAGES } from './constants';
 function Navbar({ environment, ux }) {
   const user = environment.getUser();
   const universe = environment.getUniverse();
-  const userLocale = environment.getUserLocale();
 
   const [universes, setUniverses] = useState([]);
   const [searchURL, setSearchURL] = useState();
@@ -44,7 +43,7 @@ function Navbar({ environment, ux }) {
           </div>
         )}
         <div className="oui-navbar-list__item">
-          <LanguageMenu userLocale={userLocale}></LanguageMenu>
+          <LanguageMenu></LanguageMenu>
         </div>
         <div className="oui-navbar-list__item">
           <Notifications ux={ux} />

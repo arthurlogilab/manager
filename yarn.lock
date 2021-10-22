@@ -3818,6 +3818,11 @@
   resolved "https://registry.yarnpkg.com/@ovh-ux/translate-async-loader/-/translate-async-loader-1.0.8.tgz#7cbdc3dfed1042f511206ff6bb9f14c33b8406ba"
   integrity sha512-8yEhPeRTSxtEO9ODXRYZw6pzRQiV5ULCTi8mIzt39m/b9N2TcIF4ILTPsaa8xpE4npHKa/iYgL9z0HJUFi2LGQ==
 
+"@ovh-ux/ui-kit@^5.1.0":
+  version "5.1.3"
+  resolved "https://registry.yarnpkg.com/@ovh-ux/ui-kit/-/ui-kit-5.1.3.tgz#d3fe436e79c8129c54e482a8f57e0c187e1f7bba"
+  integrity sha512-+SqTkBqPla6mQS+5hoc0jdGfBUU2F2QLx6Nug0fY0UhvlqMdl3WE0KQ9X6jDHKI938LOEpR8gnpCVUCEDjY7aA==
+
 "@ovh-ux/ui-kit@^5.1.2":
   version "5.1.2"
   resolved "https://registry.yarnpkg.com/@ovh-ux/ui-kit/-/ui-kit-5.1.2.tgz#fe77a85212943401d10651122d5789e304835a44"

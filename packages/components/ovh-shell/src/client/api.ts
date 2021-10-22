@@ -8,6 +8,16 @@ export default function exposeApi(shell: ShellClient) {
           plugin: 'i18n',
           method: 'getLocale',
         }),
+      getAvailableLocales: () =>
+        shell.invokePluginMethod({
+          plugin: 'i18n',
+          method: 'getAvailableLocales',
+        }),
+      onLocaleChange: () =>
+        shell.invokePluginMethod({
+          plugin: 'i18n',
+          method: 'onLocaleChange',
+        }),
     },
     routing: {
       init: () =>
