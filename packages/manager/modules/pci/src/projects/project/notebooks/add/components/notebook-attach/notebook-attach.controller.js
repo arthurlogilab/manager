@@ -97,6 +97,7 @@ export default class NotebookAttachController {
       .filter(({ name, region }) => {
         return !this.notebookModel.volumes
           // eslint-disable-next-line no-shadow
+          .filter(({ privateSwift }) => privateSwift)
           .map(({ container }) => `${container.name}-${container.region}`)
           .includes(`${name}-${region}`);
       })
