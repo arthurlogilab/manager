@@ -12,10 +12,10 @@ import LanguageList from './language/list.jsx';
 function LanguageMenu() {
   const ref = useRef();
 
-  const shellI18n = useContext(ApplicationContext)?.shell?.i18n();
+  const shellI18n = useContext(ApplicationContext).shell.i18n();
 
   const [show, setShow] = useState(false);
-  const [userLocale, setUserLocale] = useState(shellI18n?.getLocale());
+  const [userLocale, setUserLocale] = useState(shellI18n.getLocale());
 
   const handleRootClose = () => setShow(false);
 
@@ -26,11 +26,11 @@ function LanguageMenu() {
 
   useEffect(() => {
     setCurrentLanguage(
-      shellI18n?.getAvailableLocales().find(({ key }) => key === userLocale),
+      shellI18n.getAvailableLocales().find(({ key }) => key === userLocale),
     );
 
     setAvailableLanguages(
-      shellI18n?.getAvailableLocales().filter(({ key }) => key !== userLocale),
+      shellI18n.getAvailableLocales().filter(({ key }) => key !== userLocale),
     );
 
     shellI18n.setLocale(userLocale);
@@ -40,6 +40,11 @@ function LanguageMenu() {
     return <div></div>;
   }
 
+  const onLanguageSelected = (locale) => {
+    setUserLocale(locale);
+    setShow(false);
+  };
+
   return (
     <div className="oui-navbar-dropdown" ref={ref}>
       <LanguageButton show={show} onClick={(nextShow) => setShow(nextShow)}>
@@ -47,7 +52,7 @@ function LanguageMenu() {
       </LanguageButton>
       <LanguageList
         languages={availableLanguages}
-        onSelect={(locale) => setUserLocale(locale)}
+        onSelect={(locale) => onLanguageSelected(locale)}
       ></LanguageList>
     </div>
   );

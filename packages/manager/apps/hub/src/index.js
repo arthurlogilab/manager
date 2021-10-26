@@ -18,8 +18,12 @@ attachPreloader(findAvailableLocale(detectUserLocale()));
 shellClient.useShellApi().routing.init();
 
 const onLocaleChange = (locale) => {
-  console.log('the locale has changed => ', locale);
+  console.log(
+    'locale has change and callback has been called with locale = ',
+    locale,
+  );
 };
+console.log('hub app set onLocaleChange');
 shellClient.useShellApi().i18n.onLocaleChange(onLocaleChange);
 
 registerApplication('hub').then(({ environment }) => {

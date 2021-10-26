@@ -14,13 +14,16 @@ export default class Shell {
 
   messageBus: IMessageBus;
 
-  constructor(bus: IMessageBus) {
+  constructor() {
+    this.pluginManager = new PluginManager();
+    this.pluginEventHandler = null;
+  }
+
+  setMessageBus(bus: IMessageBus) {
     this.messageBus = bus;
     this.messageBus.onReceive((data: IPluginMessage) =>
       this.handleMessage(data),
     );
-    this.pluginManager = new PluginManager();
-    this.pluginEventHandler = null;
   }
 
   getPluginManager() {
@@ -42,9 +45,6 @@ export default class Shell {
         success,
       });
 
-    this.pluginManager
-      .invokePluginMethod(data)
-      .then(onSuccess)
-      .catch(onError);
+    this.pluginManager.invokePluginMethod(data).then(onSuccess).catch(onError);
   }
 }

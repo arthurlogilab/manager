@@ -10,16 +10,14 @@ function Shell() {
   const iframeRef = useRef(null);
   const [iframe, setIframe] = useState(null);
   const [router, setRouter] = useState(null);
-  const { environment, ux, setShell } = useContext(ApplicationContext);
-  let shell = null;
+  const { environment, ux, shell } = useContext(ApplicationContext);
 
   ux.registerSidebar('account', { isOpen: true });
   ux.registerSidebar('notifications', { isOpen: false });
 
   useEffect(() => {
-    shell = shellApi.initShell(iframeRef.current);
-    shell.registerPlugin('i18n', plugin.i18n(environment));
-    setShell(shell);
+    console.log('shell.setIframe');
+    shell.setIframe(iframeRef.current);
   }, []);
 
   useEffect(() => {

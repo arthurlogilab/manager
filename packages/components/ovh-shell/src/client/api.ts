@@ -13,11 +13,18 @@ export default function exposeApi(shell: ShellClient) {
           plugin: 'i18n',
           method: 'getAvailableLocales',
         }),
-      onLocaleChange: () =>
+      onLocaleChange: (callback: Function) => {
+        console.log('client api onLocaleChange');
         shell.invokePluginMethod({
           plugin: 'i18n',
           method: 'onLocaleChange',
-        }),
+          args: [
+            {
+              onLocaleChangeCallback: callback,
+            },
+          ],
+        });
+      },
     },
     routing: {
       init: () =>

@@ -1,9 +1,12 @@
 import Shell from './shell';
 import IFrameMessageBus from '../message-bus/iframe';
 
-export function initShell(iframe: HTMLIFrameElement) {
-  const shell = new Shell(new IFrameMessageBus(iframe));
+export function initShell() {
+  const shell = new Shell();
   return {
+    setIframe: (iframe: HTMLIFrameElement) => {
+      shell.setMessageBus(new IFrameMessageBus(iframe));
+    },
     connectIFrameApplication: () => shell,
     registerPlugin: (
       pluginId: string,
