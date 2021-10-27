@@ -51,9 +51,9 @@ export default /* @ngInject */ ($stateProvider) => {
         }),
       goToNutanixNode: /* @ngInject */ ($state, Alerter) => (
         message = false,
-        type = 'success',
+        type = 'DONE',
       ) => {
-        const reload = message && type === 'success';
+        const reload = message && type === 'DONE';
 
         const promise = $state.go('nutanix.dashboard.nodes.node.general-info', {
           reload,
