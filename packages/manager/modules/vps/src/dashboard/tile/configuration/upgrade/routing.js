@@ -189,7 +189,7 @@ export default /* @ngInject */ ($stateProvider) => {
       ) => () => {
         if (upgradeSuccess) {
           return $window.location.replace(
-            coreURLBuilder.buildURL('dedicated', '#/billing/order/:orderId', {
+            coreURLBuilder.buildURL('dedicated', '#/billing/orders/:orderId', {
               orderId: upgradeOrderId,
             }),
           );
