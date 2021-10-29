@@ -15,7 +15,16 @@ import { BILLING_REDIRECTIONS } from './constants';
 
 attachPreloader(findAvailableLocale(detectUserLocale()));
 
-shellClient.useShellApi().routing.init();
+const shell = shellClient.useShellApi();
+
+shell.routing.init();
+shell.i18n.onLocaleChange((locale) => {
+  console.log('receive locale change:', locale);
+});
+
+setTimeout(() => {
+  shell.i18n.setLocale('fr_FR');
+}, 3000);
 
 registerApplication('hub').then(({ environment }) => {
   environment.setVersion(__VERSION__);
