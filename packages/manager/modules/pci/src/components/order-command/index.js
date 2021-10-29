@@ -6,7 +6,7 @@ import '@ovh-ux/ui-kit';
 
 import component from './order-command.component';
 
-const moduleName = 'ovhManagerPciStoragesDatabasesOrderCommand';
+const moduleName = 'ovhManagerPciOrderCommand';
 
 angular
   .module(moduleName, [
@@ -15,7 +15,7 @@ angular
     'ngTranslateAsyncLoader',
     'pascalprecht.translate',
   ])
-  .component('databaseOrderCommand', component)
+  .component('orderCommand', component)
   .run(/* @ngTranslationsInject:json ./translations */);
 
 export default moduleName;

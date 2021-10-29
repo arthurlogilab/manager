@@ -1,12 +1,15 @@
 import controller from './order-command.controller';
 import template from './order-command.html';
+import './order-command.scss';
 
 export default {
+  transclude: true,
   bindings: {
-    engine: '<',
+    orderApiUrl: '<',
     orderData: '<',
-    projectId: '<',
-    user: '<',
+    parameterKeys: '<',
+    helpLink: '<',
+    autoHeight: '<',
   },
   controller,
   template,
